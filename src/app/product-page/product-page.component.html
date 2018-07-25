@@ -1,0 +1,23 @@
+<nav>
+  <h1>Titulo del e-commerce</h1>
+</nav>
+
+
+
+<section>
+  <h2>Productos</h2>
+<div *ngIf="one">
+    <app-card-product [producto]="prod"></app-card-product>
+</div>    
+  <ul>
+    <li>{{produtoname}}</li>
+    <li>{{this.price}}</li>
+  </ul>
+
+  <ul>
+    <!-- <li *ngFor="let producto of productos">
+      {{producto.name}}
+    </li> -->
+    <app-card-product (addCart)="showProduct($event)" *ngFor="let p of productos" [producto]="p"></app-card-product>
+  </ul>
+</section>

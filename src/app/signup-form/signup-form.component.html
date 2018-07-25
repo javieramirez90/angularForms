@@ -1,0 +1,32 @@
+
+<section>
+  <form  ngNativeValidate #lupeForm="ngForm" (ngSubmit)="recibiendoElForm(lupeForm)">
+    
+    <input  name="username" [(ngModel)]="username" placeholder="Nombre" type="text" required>
+    <br>
+    <input name="email" [(ngModel)]="email" placeholder="Correo" type="email" required>
+    <br>
+    <input #myPassword="ngModel" name="password" [(ngModel)]="password"placeholder="Contraseña" type="password" required>
+    
+    <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+      <p class="error" [hidden]="!myPassword.errors.required">
+        Password is required
+      </p>
+    </div>
+    <br>
+    
+    <input #myPassword2="ngModel" name="password2" [(ngModel)]="password2"placeholder="Repite contraseña" type="password">
+    <div *ngIf="myPassword.errors && (myPassword.dirty || myPassword.touched)">
+      <p class="error" [hidden]="!myPassword.errors.required">
+        Password is required
+      </p>
+    </div>
+    <div *ngIf="myPassword.value !== myPassword2.value && (myPassword2.dirty || myPassword2.touched)">
+      <p class="error" [hidden]="!myPassword.errors.required">
+        Password no coincide
+      </p>
+    </div>
+    <br>
+    <input type="submit">
+  </form>
+</section>
